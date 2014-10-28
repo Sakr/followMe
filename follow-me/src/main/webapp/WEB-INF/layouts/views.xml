@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="index" extends="templateIndex">
+	    <put-attribute name="content"	value="/WEB-INF/views/index.jsp" />
+	</definition>
+
+	<definition name="viewContactList" extends="DefaultTemplate">
+	    <put-attribute name="content"	value="/WEB-INF/views/contactView.jsp" />
+	</definition>
+	
+	<definition name="viewDelete" extends="layoutPopin">
+		<put-attribute name="content"	value="/WEB-INF/views/deleteContact.jsp" />
+	</definition>
+	
+	<definition name="viewChange" extends="layoutPopin">
+		<put-attribute name="content"	value="/WEB-INF/views/changeContact.jsp" />
+	</definition>
+	
+	<definition name="viewDetails" extends="DefaultTemplate">
+		<put-attribute name="content"	value="/WEB-INF/views/adressView.jsp" />
+	</definition>
+	
+	<definition name="viewChangeAdress" extends="layoutPopin">
+		<put-attribute name="content"	value="/WEB-INF/views/changeAdress.jsp" />
+	</definition>
+	
+	<definition name="viewDeleteAdress" extends="layoutPopin">
+		<put-attribute name="content"	value="/WEB-INF/views/deleteAdress.jsp" />
+	</definition>
+	<definition name="viewAddAdress" extends="layoutPopin">
+		<put-attribute name="content"	value="/WEB-INF/views/addAdress.jsp" />
+	</definition>
+	<definition name="viewAddContact" extends="layoutPopin">
+		<put-attribute name="content"	value="/WEB-INF/views/addContact.jsp" />
+	</definition>
+	
+	
+	
+</tiles-definitions>

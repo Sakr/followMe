@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering 
+  SYSTEM "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+<hibernate-reverse-engineering>
+
+	<type-mapping>
+		<sql-type jdbc-type="NUMERIC" precision="8" scale="2"
+			hibernate-type="big_decimal" />
+		<sql-type jdbc-type="NUMERIC" precision="14" scale="2"
+			hibernate-type="big_decimal" />
+		<sql-type jdbc-type="NUMERIC" precision="3" scale="2"
+			hibernate-type="big_decimal" />
+		<sql-type jdbc-type="NUMERIC" precision="5" scale="2"
+			hibernate-type="big_decimal" />
+		<!-- pour la vue sur le changement de périmètre -->
+		<sql-type jdbc-type="NUMERIC" precision="38" scale="2"
+			hibernate-type="big_decimal" />
+		<sql-type jdbc-type="NUMERIC" hibernate-type="java.lang.Long" />
+		<sql-type jdbc-type="BIT" hibernate-type="java.lang.Boolean" />
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string" />
+		<sql-type jdbc-type="TIMESTAMP" hibernate-type="java.util.Date" />
+	</type-mapping>
+
+
+	<table-filter match-name="user" />
+
+
+	<table name="user" class="fr.esiea.model">
+		<meta attribute="extends">BusinessEntity&lt;Long&gt;</meta>
+		<primary-key>
+			<generator class="identity" />
+		</primary-key>
+		<column name="ID">
+			<meta attribute="use-in-equals">true</meta>
+			<meta attribute="use-in-tostring">true</meta>
+		</column>
+		<column name="CODE_FONCTIONNEL">
+			<meta attribute="use-in-equals">true</meta>
+			<meta attribute="use-in-tostring">true</meta>
+		</column>
+		<column name="ID_AUTHOR" exclude="true" />
+		<column name="DATE_EFFET" exclude="true" />
+	</table>
+	
+	
+
+</hibernate-reverse-engineering>

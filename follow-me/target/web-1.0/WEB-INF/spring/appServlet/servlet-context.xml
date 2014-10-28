@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.1.xsd 
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-3.2.xsd 
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	    <beans:property name="prefix" value="/WEB-INF/views/" />
+	    <beans:property name="suffix" value=".jsp" />
+	    <beans:property name="order" value="1" />
+	</beans:bean>
+	<!-- Tiles resolver a la place de spring resolver -->
+	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+    <beans:property name="definitions">
+        <beans:list>
+            <beans:value>/WEB-INF/layouts/layouts.xml</beans:value>
+			<beans:value>/WEB-INF/layouts/views.xml</beans:value>
+        </beans:list>
+    </beans:property>
+	</beans:bean> 
+	
+	<beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	    <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
+	    <beans:property name="order" value="0" />
+	</beans:bean>
+	
+	
+	
+	<!-- Internationalization -->
+	<beans:bean id="messageSource"
+        class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <beans:property name="basename" value="classpath:messages" />
+        <beans:property name="defaultEncoding" value="UTF-8" />
+    </beans:bean>
+ 
+    <beans:bean id="localeResolver"
+        class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <beans:property name="defaultLocale" value="fr" />
+        <beans:property name="cookieName" value="myAppLocaleCookie"></beans:property>
+        <beans:property name="cookieMaxAge" value="3600"></beans:property>
+    </beans:bean>
+ 
+    <interceptors>
+        <beans:bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <beans:property name="paramName" value="locale" />
+        </beans:bean>
+         <beans:bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+                <beans:property name="cacheSeconds" value="0"/>
+                <beans:property name="useExpiresHeader" value="true"/>
+                <beans:property name="useCacheControlHeader" value="true"/>
+                <beans:property name="useCacheControlNoStore" value="true"/>
+            </beans:bean>
+    </interceptors>
+	
+	<context:component-scan base-package="fr.esiea.web.controller" />
+
+
+	
+
+	<beans:bean id="sessionFactory"
+        class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <beans:property name="dataSource" ref="dataSource" />
+        <beans:property name="hibernateProperties">
+            <beans:props>
+                <beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
+                </beans:prop>
+                <beans:prop key="hibernate.show_sql">true</beans:prop>
+            </beans:props>
+        </beans:property>
+        <beans:property name="packagesToScan" value="fr.esiea.web.model" />
+    </beans:bean>
+
+
+    <beans:bean id="dataSource" name="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <beans:property name="url"
+            value="jdbc:mysql://localhost:3306/followme" />
+        <beans:property name="username" value="root" />
+        <beans:property name="password" value="" />
+    </beans:bean>
+    <beans:bean id="transactionManager"
+        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <beans:property name="sessionFactory" ref="sessionFactory" />
+    </beans:bean>
+    <tx:annotation-driven transaction-manager="transactionManager" />
+	
+</beans:beans>
