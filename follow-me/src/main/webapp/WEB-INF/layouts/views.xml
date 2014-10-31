@@ -8,35 +8,27 @@
 	    <put-attribute name="content"	value="/WEB-INF/views/index.jsp" />
 	</definition>
 
-	<definition name="viewContactList" extends="DefaultTemplate">
-	    <put-attribute name="content"	value="/WEB-INF/views/contactView.jsp" />
+	<definition name="login" extends="DefaultTemplate">
+	    <put-attribute name="content"	value="/WEB-INF/views/login.jsp" />
 	</definition>
 	
-	<definition name="viewDelete" extends="layoutPopin">
-		<put-attribute name="content"	value="/WEB-INF/views/deleteContact.jsp" />
+	<definition name="user" extends="DefaultTemplate">
+	    <put-attribute name="content"	value="/WEB-INF/views/user.jsp" />
 	</definition>
 	
-	<definition name="viewChange" extends="layoutPopin">
-		<put-attribute name="content"	value="/WEB-INF/views/changeContact.jsp" />
+	<definition name="admin" extends="DefaultTemplate">
+	    <put-attribute name="content"	value="/WEB-INF/views/admin.jsp" />
 	</definition>
 	
-	<definition name="viewDetails" extends="DefaultTemplate">
-		<put-attribute name="content"	value="/WEB-INF/views/adressView.jsp" />
+	<definition name="denied" extends="DefaultTemplate">
+	    <put-attribute name="content"	value="/WEB-INF/views/denied.jsp" />
 	</definition>
 	
-	<definition name="viewChangeAdress" extends="layoutPopin">
-		<put-attribute name="content"	value="/WEB-INF/views/changeAdress.jsp" />
+	<definition name="" extends="layoutPopin">
+		<put-attribute name="content"	value="" />
 	</definition>
 	
-	<definition name="viewDeleteAdress" extends="layoutPopin">
-		<put-attribute name="content"	value="/WEB-INF/views/deleteAdress.jsp" />
-	</definition>
-	<definition name="viewAddAdress" extends="layoutPopin">
-		<put-attribute name="content"	value="/WEB-INF/views/addAdress.jsp" />
-	</definition>
-	<definition name="viewAddContact" extends="layoutPopin">
-		<put-attribute name="content"	value="/WEB-INF/views/addContact.jsp" />
-	</definition>
+	
 	
 	
 	
