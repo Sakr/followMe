@@ -78,13 +78,6 @@ body {
 }
 
 
-.modifyContact{
-	margin: 0 auto;
-	width:350px;
-	height:350px;
-	margin-top:40px
-}
-
 .inputmodify{
 	font-family : montserratregular;
   	font-size : 12px;
@@ -158,3 +151,5 @@ body {
 	color : #4B6E83;
 	margin-left:39px;
 }
+
+

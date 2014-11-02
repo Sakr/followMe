@@ -34,7 +34,6 @@ public class ActivityCategoryServiceImpl implements ActivityCategoryService{
 	@Transactional
 	public void createActivityCategory(ActivityCategory activityCategory) {
 		this.ActivityCategoryDao.createActivityCategory(activityCategory);
-		
 	}
 
 	@Override

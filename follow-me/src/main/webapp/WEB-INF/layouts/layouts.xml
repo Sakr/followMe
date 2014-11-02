@@ -5,8 +5,7 @@
 <tiles-definitions>
 	<!-- Layout Principale -->
     <definition name="DefaultTemplate" template="/WEB-INF/views/template/layoutPrincipal.jsp">
-		<put-attribute name="title" 	value="Contact Me" />
-		<put-attribute name="top" value="/WEB-INF/views/template/top.jsp" />
+		<put-attribute name="title" 	value="Follow Me" />
 		<put-attribute name="header" 	value="/WEB-INF/views/template/header.jsp" />
 		<put-attribute name="menu" 		value="/WEB-INF/views/template/menu.jsp" />
 		<put-attribute name="content" 		value="" />
@@ -16,7 +15,7 @@
 	</definition>
 	<!-- Layout Page d'index sans footer ni header -->
 	 <definition name="templateIndex" template="/WEB-INF/views/template/layoutIndex.jsp">
-		<put-attribute name="title" 	value="Contact Me" />
+		<put-attribute name="title" 	value="Follow Me" />
 		<put-attribute name="content" 		value="" />
 		<put-attribute name="css" value="/WEB-INF/views/template/import_commons_css.jsp" />
 		<put-attribute name="javascript" value="/WEB-INF/views/template/import_commons_js.jsp" />

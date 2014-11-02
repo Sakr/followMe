@@ -2,13 +2,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-<!-- 
-<a href="<c:url value="/start" />" class = "logo">
-</a> -->
 
-<img class ="logo" src="resources/images/ContactMe_Logo_header.png" />
-
-
+<img class="activityResume" src="resources/images/activityResume.png" onclick="activityBox(this);"/>
+<img class="account" src="resources/images/img_profil.png" onclick="accountBox(this);"/>
+<div>
+  <img class="logo" src="resources/images/logo.png">
+</div>
 <div class="langueSelection">
 	<p class="langue">
 		<label><spring:message code="home.langue"/></label>

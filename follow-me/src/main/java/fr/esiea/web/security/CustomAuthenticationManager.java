@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,6 +15,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 
+
 /**
  * A custom authentication manager that allows access if the user details
  * exist in the database and if the username and password are not the same.
@@ -21,8 +23,7 @@ import org.springframework.security.core.authority.GrantedAuthorityImpl;
  */
 public class CustomAuthenticationManager implements AuthenticationManager {
 
-	protected static Logger logger = Logger.getLogger("service");
-
+	private static final Logger logger = LoggerFactory.getLogger(CustomAuthenticationManager.class);
 	// Our custom DAO layer
 	//private UserDao userDAO = new UserDAO();
 

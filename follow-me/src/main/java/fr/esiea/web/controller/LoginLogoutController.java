@@ -3,8 +3,8 @@
  */
 package fr.esiea.web.controller;
 
-
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
  * Handles and retrieves the login or denied page depending on the URI template
  */
 @Controller
-@RequestMapping("/auth")
 public class LoginLogoutController {
         
-	protected static Logger logger = Logger.getLogger("controller");
+	private static final Logger logger = LoggerFactory.getLogger(LoginLogoutController.class);
 
 	/**
 	 * @return the name of the JSP page

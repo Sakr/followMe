@@ -1,6 +1,7 @@
 package fr.esiea.web.controller;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,10 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
  * the adminpage, however.
  */
 @Controller
-@RequestMapping("/main")
 public class MainController {
 
-	protected static Logger logger = Logger.getLogger("controller");
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	/**
 	 * Handles and retrieves the common JSP page that everyone can see

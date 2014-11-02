@@ -1,45 +1,17 @@
 /* ==============================================
-   FEUILLE DE STYLES PROJET CONTACT ME
+   FEUILLE DE STYLES PROJET FOLLOW ME
    ============================================== */
 
 /* ------------------------------- */ 
 /*             =  PAGE             */
 /* ------------------------------- */ 
 
-@font-face {
-    font-family: 'montserratbold';
-    src: url('../font/Monserrat/montserrat-bold-webfont.eot');
-    src: url('../font/Monserrat/montserrat-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../font/Monserrat/montserrat-bold-webfont.woff2') format('woff2'),
-         url('../font/Monserrat/montserrat-bold-webfont.woff') format('woff'),
-         url('../font/Monserrat/montserrat-bold-webfont.ttf') format('truetype'),
-         url('../font/Monserrat/montserrat-bold-webfont.svg#montserratbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'montserratregular';
-    src: url('../font/Monserrat/montserrat-regular-webfont.eot');
-    src: url('../font/Monserrat/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../font/Monserrat/montserrat-regular-webfont.woff2') format('woff2'),
-         url('../font/Monserrat/montserrat-regular-webfont.woff') format('woff'),
-         url('../font/Monserrat/montserrat-regular-webfont.ttf') format('truetype'),
-         url('../font/Monserrat/montserrat-regular-webfont.svg#montserratregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 
 body {
 	/*padding: 0 5px;
 	color: #737373;
 	background: #dddccc;*/
 	margin:0;
-
-	
-	background-color: #85b9dd;
-
-
 }
 
 html{
@@ -99,28 +71,7 @@ a{
   color : #4B6E83;
 }
 
-#header{
-	  margin: 0 auto;
-  background : #FFFFFF;
-  background : rgba(255, 255, 255, 1);
-  width : 1000px;
-  height : 72px;
-  border-radius : 10px;
-  -moz-border-radius : 10px;
-  -webkit-border-radius : 10px;
-    box-shadow : 1px 1px 10px rgba(0, 0, 0, 0.75);
-  margin-bottom: 2px;
-  /*margin-top: 10px;*/
-}
 
-#header .logo{
-  content:url(../images/ContactMe_Logo_header.png);
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 20px;
-  margin-top: 13px;
-  margin-right: 540px;
-}
 
 #header .langue {
 	padding-top: 1px;
@@ -338,15 +289,6 @@ table {
 /*           =  SEARCH BAR         */
 /* ------------------------------- */ 
 
-.readContact{
-	font-family : montserratregular;
-	font-size : 12px;
-	color : #4B6E83;
-	padding-left: 10px;
-	display:inline-block;
-	vertical-align: middle;
-	margin-bottom:6px;
-}
 
 .picto{
 	display:inline-block;
@@ -354,15 +296,7 @@ table {
 	margin-right:10px;
 }
 
-.searchContact {
-    width: 750px;
-    height: 38px;
-    padding: 1em;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 15px;
-   	background : #ffffff;
-}
+
 
 .inputSearch{
 	font-family : montserratregular;
@@ -749,6 +683,440 @@ svg {
   }
 }
 
+
+
+@font-face {
+    font-family: 'montserratbold';
+    src: url('montserrat-bold-webfont.eot');
+    src: url('montserrat-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('montserrat-bold-webfont.woff2') format('woff2'),
+         url('montserrat-bold-webfont.woff') format('woff'),
+         url('montserrat-bold-webfont.ttf') format('truetype'),
+         url('montserrat-bold-webfont.svg#montserratbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratregular';
+    src: url('montserrat-regular-webfont.eot');
+    src: url('montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('montserrat-regular-webfont.woff2') format('woff2'),
+         url('montserrat-regular-webfont.woff') format('woff'),
+         url('montserrat-regular-webfont.ttf') format('truetype'),
+         url('montserrat-regular-webfont.svg#montserratregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/*.triangle {
+   width: 100px;
+    height: 100px;
+    position: absolute;
+    overflow: hidden;
+    box-shadow: 0 16px 10px -17px rgba(0, 0, 0, 0.5);
+
+    z-index: 2;
+}
+.triangle:after {
+   content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #999;
+    -webkit-transform: rotate(45deg);
+    top: 75px;
+    left: 25px;
+    box-shadow: -1px -1px 10px -2px rgba(0, 0, 0, 0.5);
+
+    z-index: 2;
+}
+*/
+
+
+#activityBox{
+
+    
+
+    width: 200px;
+    height: 180px;  
+    background-color: #FFFFFF;
+
+    margin-top: 10px;
+    margin-left: 10px;
+
+
+    position: absolute;
+    z-index: 2;
+
+    background-color: white;
+
+      box-shadow : 0px 0px 4px rgba(0, 0, 0, 0.75);
+
+
+
+}
+
+#accountBox{
+
+
+
+    width: 200px;
+    height: 180px;  
+    background-color: #FFFFFF;
+
+    margin-top: 10px;
+    margin-right: 20px;
+
+
+    position: absolute;
+    z-index: 2;
+
+
+    right: 0;
+    background-color: white;
+
+      box-shadow : 0px 0px 4px rgba(0, 0, 0, 0.75);
+
+
+
+}
+
+
+/*#activityBox:after
+{
+   content:"";
+   position: absolute;
+   display: block;
+   width: 0;
+   height: 0;
+   border-bottom: 20px dashed white; 
+   border-left: 15px solid transparent; 
+   border-right: 15px solid transparent; 
+   margin: -15px 50px 10px 10px;
+
+   box-shadow : 0px 0px 4px rgba(0, 0, 0, 0.75);
+
+}*/
+
+
+
+
+.logo{
+    height: 80px;
+    width: 420px;
+    display: block;
+    vertical-align: middle;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.account{
+    display: inline-block;
+    float: right;
+    vertical-align: middle;
+    height: 80px;
+    width: 80px;
+}
+
+.activityResume{
+    display: inline-block;
+    float:left;
+    vertical-align: middle;
+    height: 80px;
+    width: 73px;
+}
+
+.headerDiv{
+    display: inline-block;
+}
+
+.searchBar{
+position: absolute;
+z-index: 2;
+}
+
+#map{
+    width: 100%;
+    height: 700px;
+    position: relative;
+}
+
+.popUpFrame{
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+
+}
+
+.head-wrapper{
+    padding-left: 10px;
+}
+
+.body-wrapper{
+    padding-left: 10px;
+}
+
+.popUpActivity{
+    display:inline-block;
+    vertical-align: middle;
+    margin-right: 50px;
+
+    font-family : Myriad Pro;
+    color : black;
+}
+
+.popUpActivityTitle{
+    font-weight: bold;
+    font-size : 20px;
+}
+
+.popUpActivityLeader{
+    font-weight: regular;
+    font-size : 10px;
+}
+
+.img_profil{
+    width:66px;
+    height: 66px;
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.popUpAdress{
+    font-family : Myriad Pro;
+    font-size : 12px;
+    color : black;
+}
+
+.PopUpAdressTitle{
+    font-weight: regular;
+}
+
+.PopUpAdressContent{
+    font-weight: bold;
+}
+
+.button {
+    font-family : Montserrat;
+    font-weight : bold;
+    font-size : 14px;
+    color : #B3B3B3;
+    text-align:center;
+    
+ /*   border-radius:6px;
+    font-size: 12px;
+
+    border : none;
+    outline: none;
+
+    */display:block;
+    margin: 0 auto;
+    margin-bottom: 5px;
+/*
+    background : #0097D7;*/
+    width : 130px;
+    height : 33px;
+
+    
+      background : #FFFFFF;
+  background : rgba(255, 255, 255, 1);
+  border-style : Solid;
+  border-color : #B3B3B3;
+  border-color : rgba(179, 179, 179, 1);
+  border-width : 1px;
+  width : 160px;
+    height : 36px;
+  border-radius : 5px;
+  -moz-border-radius : 5px;
+  -webkit-border-radius : 5px;
+
+  outline: none;
+  
+}
+
+.button:hover {
+    background : #B3B3B3;
+    color : #FFFFFF;
+}
+
+
+.tableCarac{
+    text-align: center;
+}
+
+
+.infobox-wrapper {
+    display:none;
+
+}
+#infobox {
+    padding: 10px 10px 10px 10px;
+    background:#FFF;
+    box-shadow: 0 0 8px #000;
+}
+
+.tableCarac{
+    font-family : Myriad Pro;
+    font-weight: regular;
+    font-size : 12px;
+    color : black;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.pictoCarac{
+    width: 40px;
+    height: 40px;
+}
+
+
+
+
+
+
+
+.login{
+    height : 300px;
+    width: 500px;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 200px;
+}
+
+.input{
+    font-family : Montserrat;
+    font-size : 12px;
+    color : #4B6E83;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-style : Solid;
+    border-color : #B3B3B3;
+    border-color : rgba(179, 179, 179, 1);
+    border-width : 1px;
+    width : 264px;
+    height : 33px;
+    border-radius : 6px;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input:focus{
+    outline: none;
+    border-style : Solid;
+    border-color : #0097D7;
+ }
+
+.submit {
+    font-family : Montserrat;
+    font-weight : bold;
+    font-size : 12px;
+    color : #FFFFFF;
+    text-align:center;
+    
+    border-radius:6px;
+    font-size: 12px;
+
+    border : none;
+    outline: none;
+    /*display: inline-block;*/
+
+    background : #0097D7;
+    width : 130px;
+    height : 33px;
+
+display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.submit:hover {
+    background : #33ACDF;
+}
+
+.createAccount{
+    font-family : Myriad Pro;
+    font-weight: regular;
+    font-size : 10px;
+    color : black;
+    text-decoration: none;
+    text-align: center;
+    display:block;
+    margin-top: 10px;
+}
+
+
+.createAccountForm{
+    height : 500px;
+    width: 500px;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 200px;
+}
+
+
+.styled-select select {
+   /*background: transparent;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;*/
+
+   font-family : Montserrat;
+    font-size : 12px;
+    color : #4B6E83;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    border-style : Solid;
+    border-color : #B3B3B3;
+    border-color : rgba(179, 179, 179, 1);
+    border-width : 1px;
+    width : 276px;
+    height : 35px;
+    border-radius : 6px;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: white;
+
+    outline: none;
+}
+
+.styled-select:focus{
+    outline: none;
+    border-style : Solid;
+    border-color : #0097D7;
+ }
+/*
+.styled-select {
+      font-family : Montserrat;
+    font-size : 12px;
+    color : #4B6E83;
+
+    width : 274px;
+    height : 38px;
+    border-radius : 6px;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   overflow: hidden;
+   
+}
+*/
 
 
 

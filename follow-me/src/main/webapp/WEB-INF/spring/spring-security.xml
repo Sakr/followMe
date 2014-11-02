@@ -12,14 +12,14 @@
 	<security:http auto-config="false" use-expressions="true" access-denied-page="/auth/denied"
 			entry-point-ref="authenticationEntryPoint" >
 	
-		<security:intercept-url pattern="/auth/login" access="permitAll"/>
-		<security:intercept-url pattern="/main/admin" access="hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern="/main/user" access="hasRole('ROLE_USER')"/>
+		<security:intercept-url pattern="/login" access="permitAll"/>
+		<security:intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/user" access="hasRole('ROLE_USER')"/>
 			
 		<security:logout 
 				invalidate-session="true" 
-				logout-success-url="/auth/login" 
-				logout-url="/auth/logout"/>
+				logout-success-url="/login" 
+				logout-url="/logout"/>
 	
 		<security:custom-filter ref="userListFilter" before="FILTER_SECURITY_INTERCEPTOR"/>
 		<security:custom-filter ref="authenticationFilter" position="FORM_LOGIN_FILTER"/>
@@ -39,17 +39,17 @@
  	
  	<!-- We just actually need to set the default failure url here -->
  	<bean id="customAuthenticationFailureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler"
- 		p:defaultFailureUrl="/auth/login?error=true" />
+ 		p:defaultFailureUrl="/login?error=true" />
  		
  	 <!-- We just actually need to set the default target url here -->
  	<bean id="customAuthenticationSuccessHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler"
- 		p:defaultTargetUrl="/main/user" />
+ 		p:defaultTargetUrl="/user" />
  	
  	<!-- The AuthenticationEntryPoint is responsible for redirecting the user to a particular page, like a login page,
  			whenever the server sends back a response requiring authentication -->
  	<!-- See Spring-Security Reference 5.4.1 for more info -->
  	<bean id="authenticationEntryPoint"  class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint"
-	 	p:loginFormUrl="/auth/login"/>
+	 	p:loginFormUrl="/login"/>
 
 	<!-- The tag below has no use but Spring Security needs it to autowire the parent property of 
 			org.springframework.security.authentication.ProviderManager. Otherwise we get an error 
