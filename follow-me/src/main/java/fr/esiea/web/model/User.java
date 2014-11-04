@@ -16,6 +16,10 @@ import javax.persistence.Table;
 
 
 
+/**
+ * @author sakr
+ *
+ */
 @Entity
 @Table(name = "user")
 public class User implements java.io.Serializable{
@@ -36,10 +40,11 @@ public class User implements java.io.Serializable{
 	private int phoneNumber;
 	private boolean disabled;
 	private Date dateCreation;
+	private String activationCode;
 	
 	
+
 	/**
-	 * 
 	 * @param id
 	 * @param firstName
 	 * @param name
@@ -47,14 +52,17 @@ public class User implements java.io.Serializable{
 	 * @param login
 	 * @param password
 	 * @param photo
-	 * @param idAdress
+	 * @param adress
 	 * @param phoneNumber
 	 * @param disabled
 	 * @param dateCreation
+	 * @param activationCode
 	 */
 	public User(int id, String firstName, String name, String mail,
 			String login, String password, byte[] photo, Adress adress,
-			int phoneNumber, boolean disabled, Date dateCreation) {
+			int phoneNumber, boolean disabled, Date dateCreation,
+			String activationCode) {
+		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.name = name;
@@ -66,6 +74,7 @@ public class User implements java.io.Serializable{
 		this.phoneNumber = phoneNumber;
 		this.disabled = disabled;
 		this.dateCreation = dateCreation;
+		this.activationCode = activationCode;
 	}
 
 
@@ -162,6 +171,14 @@ public class User implements java.io.Serializable{
 	}
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
+	}
+	
+	@Column(name="activation_code")
+	public String getActivationCode() {
+		return activationCode;
+	}
+	public void setActivationCode(String activationCode) {
+		this.activationCode = activationCode;
 	}
 
 	@Override

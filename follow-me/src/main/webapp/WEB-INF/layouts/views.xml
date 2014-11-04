@@ -12,7 +12,7 @@
 	    <put-attribute name="content"	value="/WEB-INF/views/principal.jsp" />
 	</definition>
 	
-	<definition name="addAcount" extends="DefaultTemplate">
+	<definition name="addAcount" extends="templateIndex">
 	    <put-attribute name="content"	value="/WEB-INF/views/addAcount.jsp" />
 	</definition>
 	
@@ -27,8 +27,5 @@
 	<definition name="" extends="layoutPopin">
 		<put-attribute name="content"	value="" />
 	</definition>
-	
-	
-	
 	
 </tiles-definitions>

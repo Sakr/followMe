@@ -68,11 +68,11 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public User getUserByEmail(String email) {
+	public User getUserByActivationCode(String code) {
 		List<User> userList = new ArrayList<User>();
 		Session session = this.sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from User u where u.mail = :mail");
-		query.setParameter("mail", email);
+		Query query = session.createQuery("from User u where u.activationCode = :code");
+		query.setParameter("code", code);
 		userList = query.list();
 		if (userList.size() > 0)
 			return userList.get(0);

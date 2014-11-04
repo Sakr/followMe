@@ -1,6 +1,7 @@
 package fr.esiea.web.controller;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,6 +17,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+
 
 
 
@@ -66,12 +68,15 @@ public class AccountController extends ConfigController{
 	    user.setDisabled(true);
 	    user.setDateCreation(new Date());
 	    
+	    
+	    String randomActivationCode = UUID.randomUUID().toString();
+	    user.setActivationCode(randomActivationCode);
 	    //On enregistre l'utilisateur sur la bdd
 	    userService.createUser(user);
 	    
-	    //On envoi un mail d'acticvation a l'utilisateur 
+	    //On envoi un mail d'acticvation a l'utilisateur account.activation.text
 	    this.sendEmail(messages.getString("account.activation.link"), getActivationUrlByUser(user), user.getMail());
-	    
+	    this.sendEmail(messages.getString("account.activation.link"), messages.getString("account.activation.text"), user.getMail());
 	    String statutAccount=messages.getString("account.save.succed");
 		
 		model.put("accountFormBean", accountFormBean);
@@ -81,12 +86,14 @@ public class AccountController extends ConfigController{
 	
 	@RequestMapping(value = "/activateAccount")
 	public ModelAndView activateAccount(ModelMap model,
-			@RequestParam(value = "email", required = true) String email) {
+			@RequestParam(value = "pin", required = true) String pin) {
 	
 		//Activation du compte
-		User user=userService.getUserByEmail(email);
+		User user=userService.getUserByActivationCode(pin);
 		if(user!=null){
 			user.setDisabled(false);
+			//On active le comte sur la bdd
+			userService.updateUser(user);
 		}
 		
 	    ModelAndView mav = new ModelAndView("login");
@@ -99,7 +106,7 @@ public class AccountController extends ConfigController{
 		System.out.println(request.getServletPath()); 
 		String scheme = request.getScheme()+"://";             // http
 		String host = request.getHeader("host");     // localhost:8888
-		String generatedUrl = " <a href=\" "+ scheme+host+"/web/"+"activateAccount?email="+user.getMail() +" \">"+ messages.getString("account.activation.link") +"</a>";
+		String generatedUrl = " <a href=\" "+ scheme+host+"/web/"+"activateAccount?pin="+user.getActivationCode() +" \">"+ messages.getString("account.activation.link") +"</a>";
 		return generatedUrl;
 	}
 }

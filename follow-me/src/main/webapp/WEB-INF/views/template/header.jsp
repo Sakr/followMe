@@ -18,3 +18,4 @@
 		</select>
 	</p>		
 </div>
+<a href="<c:url value="/logout"/>"><spring:message code="parincipal.deconnexion" /></a>
