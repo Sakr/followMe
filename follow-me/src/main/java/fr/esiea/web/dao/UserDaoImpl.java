@@ -1,12 +1,15 @@
 package fr.esiea.web.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+
 import fr.esiea.web.model.User;
 
 
@@ -35,9 +38,9 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public User getUserById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();		
-		User p = (User) session.load(User.class, new Integer(id));
-		logger.info("User loaded successfully, User details="+p);
-		return p;
+		User user = (User) session.load(User.class, new Integer(id));
+		logger.info("User loaded successfully, User details="+user);
+		return user;
 	}
 
 	@Override
@@ -62,6 +65,19 @@ public class UserDaoImpl implements UserDao{
 			session.delete(user);
 		}
 		logger.info("User deleted successfully, user details="+user);
+	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		List<User> userList = new ArrayList<User>();
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from User u where u.mail = :mail");
+		query.setParameter("mail", email);
+		userList = query.list();
+		if (userList.size() > 0)
+			return userList.get(0);
+		else
+			return null;	
 	}
 	
 }

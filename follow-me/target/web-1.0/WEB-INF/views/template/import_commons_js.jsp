@@ -8,8 +8,11 @@
 <script type="text/javascript" src="<c:url value="/resources/js/datepicker.packed.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/dataTables.js"/>"></script>
 <!-- tableaux js -->
-<script type="text/javascript" src="<c:url value="/resources/js/ContactMe.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/FollowMe.js"/>"></script>
 <!-- autres -->
 <script type="text/javascript" src="<c:url value="/resources/js/scrollfix.js"/>"></script>
+<!-- API Map -->
+<script type="text/javascript" src="<c:url value="/resources/js/api-map.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/infobox.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/pin.js"/>"></script>
 
-</script>

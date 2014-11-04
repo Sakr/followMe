@@ -9,81 +9,46 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 
-
-/**
- * A custom authentication manager that allows access if the user details
- * exist in the database and if the username and password are not the same.
- * Otherwise, throw a {@link BadCredentialsException}
- */
 public class CustomAuthenticationManager implements AuthenticationManager {
 
 	private static final Logger logger = LoggerFactory.getLogger(CustomAuthenticationManager.class);
-	// Our custom DAO layer
-	//private UserDao userDAO = new UserDAO();
+	
 
-	// We need an Md5 encoder since our passwords in the database are Md5 encoded. 
-	private Md5PasswordEncoder passwordEncoder = new Md5PasswordEncoder();
+	//private Md5PasswordEncoder passwordEncoder = new Md5PasswordEncoder();
 	
 	public Authentication authenticate(Authentication auth)
 			throws AuthenticationException {
 
 		logger.debug("Performing custom authentication");
 		
-		// Init a database user object
-		//DbUser user = null;
-		
-//		try {
-//			// Retrieve user details from database
-//			//user = userDAO.searchDatabase(auth.getName());
-//		} catch (Exception e) {
-//			logger.error("User does not exists!");
-//			throw new BadCredentialsException("User does not exists!");
-//		}
-//		if(auth.getName().equals("sakr")){
-//			// Compare passwords
-//			// Make sure to encode the password first before comparing
-//			if (  passwordEncoder.isPasswordValid("sakr", (String) auth.getCredentials(), null) == false ) {
-//				logger.error("Wrong password!");
-//				throw new BadCredentialsException("Wrong password!");
-//			}
-//		}
-//		
-//		
-//		
-//		// Here's the main logic of this custom authentication manager
-//		// Username and password must be the same to authenticate
-//		if (auth.getName().equals(auth.getCredentials()) == true) {
-//			logger.debug("Entered username and password are the same!");
-//			throw new BadCredentialsException("Entered username and password are the same!");
-//			
-//		} else {
-//			/**
-//			 * Access level of the user. 
-//			 * 1 = Admin user
-//			 * 2 = Regular user
-//			 */
-//			logger.debug("User details are good and ready to go");
-//			return new UsernamePasswordAuthenticationToken(
-//					auth.getName(), 
-//					auth.getCredentials(), 
-//					getAuthorities(1));
-//		}
 		/**
-		 * Access level of the user. 
-		 * 1 = Admin user
-		 * 2 = Regular user
+		 * Normalement ici nous nous connectons à la base de donées pour verfier les données de l'utilisateur
+		 * Nous le faisons au niveau du controlleur comme nous n'avons pas encore implementer toutes les fonctionnalités
+		 * liées au profils (Admin Anonymous et User). Tous utilisateur sera connecté autant que user pour cette version la de notre 
+		 * application
 		 */
-		logger.debug("User details are good and ready to go");
-		return new UsernamePasswordAuthenticationToken(
-				auth.getName(), 
-				auth.getCredentials(), 
-				getAuthorities(1));
+		
+		if (auth.getName().equals(auth.getCredentials()) == true) {
+			logger.debug("Entered username and password are the same!");
+			throw new BadCredentialsException("Entered username and password are the same!");
+			
+		} else {
+			/**
+			 * Access level of the user. 
+			 * 1 = Admin user
+			 * 2 = Regular user
+			 */
+			logger.debug("User details are good and ready to go");
+			return new UsernamePasswordAuthenticationToken(
+					auth.getName(), 
+					auth.getCredentials(), 
+					getAuthorities(1));
+		}
 	}
 	
 	/**
@@ -98,7 +63,6 @@ public class CustomAuthenticationManager implements AuthenticationManager {
 			List<GrantedAuthority> authList = new ArrayList<GrantedAuthority>(2);
 			
 			// All users are granted with ROLE_USER access
-			// Therefore this user gets a ROLE_USER by default
 			logger.debug("Grant ROLE_USER to this user");
 			authList.add(new GrantedAuthorityImpl("ROLE_USER"));
 			

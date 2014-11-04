@@ -2,13 +2,9 @@ package fr.esiea.web.service;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import fr.esiea.web.dao.UserDao;
 import fr.esiea.web.model.User;
 
@@ -52,6 +48,11 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void deleteUser(int id) {
 		this.userDao.deleteUser(id);
+	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		return this.userDao.getUserByEmail(email);
 	}
 
 }

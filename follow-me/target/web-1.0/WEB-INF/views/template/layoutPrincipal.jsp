@@ -23,7 +23,6 @@
 			<tiles:insertAttribute name="header" />
 		</div>
 		<!-- fin #header -->
-		<tiles:insertAttribute name="top"/>
 		<div id="centre">
 		
 			<div id="contenu_onglets">

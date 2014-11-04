@@ -13,6 +13,7 @@
 			entry-point-ref="authenticationEntryPoint" >
 	
 		<security:intercept-url pattern="/login" access="permitAll"/>
+		<security:intercept-url pattern="/addAcount" access="permitAll"/>
 		<security:intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/user" access="hasRole('ROLE_USER')"/>
 			
@@ -47,12 +48,8 @@
  	
  	<!-- The AuthenticationEntryPoint is responsible for redirecting the user to a particular page, like a login page,
  			whenever the server sends back a response requiring authentication -->
- 	<!-- See Spring-Security Reference 5.4.1 for more info -->
  	<bean id="authenticationEntryPoint"  class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint"
 	 	p:loginFormUrl="/login"/>
 
-	<!-- The tag below has no use but Spring Security needs it to autowire the parent property of 
-			org.springframework.security.authentication.ProviderManager. Otherwise we get an error 
-			A probable bug. This is still under investigation-->
 	<security:authentication-manager/>
 </beans>

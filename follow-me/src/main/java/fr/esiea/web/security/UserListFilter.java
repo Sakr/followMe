@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -40,13 +39,10 @@ public class UserListFilter extends OncePerRequestFilter {
         
         // Filter only if user details is not empty; otherwise there's nothing to filter
         if (authentication != null) {
-        	
-        	// If the username is equal to sakr, deny access
-	        if (authentication.getName().equals("sakr") == true ) {
-	        	logger.error("Username and password match. Access denied!");
-	            throw new AccessDeniedException("Username and password match. Access denied!");
-	        }
-	        
+        	/**
+        	 * Ici nous sommes censé verifier si l'utilisateur fait parties des utilisateurs ayant le droit d'utiliser l'appli
+        	 * Nous ne l'avons pas implementer non plus pour cette version de l'application
+        	 */
         }
         
         // User details are not empty

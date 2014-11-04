@@ -88,8 +88,17 @@
 	    	<scope>compile</scope>
 	    </dependency>
 	    
-	    
-	    			
+	    <!-- Spring mail -->
+	   	<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency> 		
+		<dependency>
+		  <groupId>javax.mail</groupId>
+		  <artifactId>mail</artifactId>
+		  <version>1.4.5</version>
+		</dependency>	
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>

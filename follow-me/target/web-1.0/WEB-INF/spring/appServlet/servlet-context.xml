@@ -27,7 +27,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	    <beans:property name="prefix" value="/WEB-INF/views/" />
@@ -49,7 +49,19 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 	    <beans:property name="order" value="0" />
 	</beans:bean>
 	
-	
+	<beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <beans:property name="host" value="smtp.gmail.com" />
+        <beans:property name="port" value="587" />
+        <beans:property name="username" value="youremail" />
+        <beans:property name="password" value="yourpassword" />
+        <beans:property name="javaMailProperties">
+            <beans:props>
+                <beans:prop key="mail.transport.protocol">smtp</beans:prop>
+                <beans:prop key="mail.smtp.auth">true</beans:prop>
+                <beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+            </beans:props>
+        </beans:property>
+    </beans:bean>
 	
 	<!-- Internationalization -->
 	<beans:bean id="messageSource"
@@ -82,15 +94,20 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 	<context:component-scan base-package="fr.esiea.web.model" />
 	<context:component-scan base-package="fr.esiea.web.service" />
 
+	<!-- JDBC Connection properties -->
+	<beans:bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <beans:property name="location" value="/WEB-INF/jdbc.properties" />
+    </beans:bean>
 	<beans:bean id="dataSource" name="dataSource"  class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
-        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <beans:property name="driverClassName" value="${jdbc.driverClassName}" />
         <beans:property name="url"
-            value="jdbc:mysql://localhost:3306/followme" />
-        <beans:property name="username" value="root" />
-        <beans:property name="password" value="" />
+            value="${jdbc.databaseurl}" />
+        <beans:property name="username" value="${jdbc.username}" />
+        <beans:property name="password" value="${jdbc.password}" />
     </beans:bean>
-
+    
+	<!--     Hibernate configuration -->
 	<beans:bean id="hibernate4AnnotatedSessionFactory"
         class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <beans:property name="dataSource" ref="dataSource" />
@@ -114,7 +131,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 			</beans:list>
 		</beans:property>
     </beans:bean>
-    
+  
   	<!-- User -->
 	<beans:bean id="userDAO" class="fr.esiea.web.dao.UserDaoImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />

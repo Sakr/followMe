@@ -3,24 +3,17 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
-
-<h1>Login</h1>
-
 <div id="login-error">${error}</div>
 
-<form action="j_spring_security_check" method="post" >
+<form action="j_spring_security_check" class="login" method="post" >
 
-<p>
-	<label for="j_username"><spring:message code="login.username"/></label>
-	<input id="j_username" name="j_username" type="text" />
-</p>
+<img class="logo" src="<c:url value="resources/images/logo.png" />">
+<%-- 	<label for="j_username"><spring:message code="login.username"/></label> --%>
+	<input  class = "input" placeholder="Login" id="j_username" name="j_username" type="text" />
+<%-- 	<label for="j_password"><spring:message code="login.password"/></label> --%>
+	<input class = "input" placeholder="Password" id="j_password" name="j_password" type="password" />
 
-<p>
-	<label for="j_password"><spring:message code="login.password"/></label>
-	<input id="j_password" name="j_password" type="password" />
-</p>
-
-<input  type="submit" value="Login"/>								
-	
+	<input class = "submit" value = "SIGN IN"  type="submit" />								
+	<a class = "createAccount" href="#">Create an account</a>
 </form>
 
