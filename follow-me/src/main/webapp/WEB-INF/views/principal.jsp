@@ -35,7 +35,11 @@
 	var markers = [];
 
 	function initialize() {
-		var centerpoint = new google.maps.LatLng(48.8219906, 2.2938723999999997);
+		
+		//Centrer la page sur l'adress de l'utilisateur
+		var centerpoint = new google.maps.LatLng('${connectedUser.adress.latitude}', '${connectedUser.adress.longitude}');
+		
+		//
 		var activitypoint = new google.maps.LatLng(48.819428, 2.281654);
 
 		var mapOptions = {
