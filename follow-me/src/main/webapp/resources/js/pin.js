@@ -55,19 +55,56 @@ var map;
 var markers = [];
 
 function initialize() {
-  var haightAshbury = new google.maps.LatLng(37.7699298, -122.4469157);
-
+  var centerpoint = new google.maps.LatLng(48.8219906, 2.2938723999999997);
+  var activitypoint = new google.maps.LatLng(48.819428, 2.281654);
+  
+  
   var mapOptions = {
-    zoom: 12,
-    center: haightAshbury,
+    zoom: 17,
+    center: centerpoint,
     mapTypeId: google.maps.MapTypeId.TERRAIN
   };
   map = new google.maps.Map(document.getElementById('map'),
       mapOptions);
 
   google.maps.event.addListener(map, 'click', function(event) {
-    addMarker('resources/images/pin_sport.png', event.latLng);
+    addMarker('resources/images/fitness.png', event.latLng);
   });
+  
+  var image = {
+	      url: 'resources/images/pin_sport.png',
+	      origin: new google.maps.Point(0, 0),
+	      anchor: new google.maps.Point(18, 48),
+	      scaledSize: new google.maps.Size(35, 48)
+	    };
+
+	  var marker = new google.maps.Marker({
+	    // position: location,
+	    position: activitypoint,
+	    map: map,
+	    icon: image,
+	    visible: true
+	  });
+
+	  infobox = new InfoBox({
+	         content: document.getElementById("infobox2"),
+	         disableAutoPan: false,
+	         maxWidth: 150,
+	         pixelOffset: new google.maps.Size(-123, -330),
+	         zIndex: null,
+	         boxStyle: {
+	            width: "250px",
+	            height:"100px"
+	        },
+	        closeBoxMargin: "5px 0px 0px 2px",
+	        closeBoxURL: "resources/images/close.png",
+	        infoBoxClearance: new google.maps.Size(1, 1)
+	    });
+	    
+	    google.maps.event.addListener(marker, 'click', function() {
+	        infobox.open(map, this);
+	        map.panTo(loc);
+	    });
 
 
 }
@@ -138,7 +175,7 @@ function addMarker(imageUrl, location) {
             width: "250px",
             height:"100px"
         },
-        closeBoxMargin: "12px 8px 2px 2px",
+        closeBoxMargin: "5px 0px 0px 2px",
         closeBoxURL: "resources/images/close.png",
         infoBoxClearance: new google.maps.Size(1, 1)
     });

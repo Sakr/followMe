@@ -17,10 +17,10 @@ var otableOptionsList = new Array();
  * Fonctions
  ******************************************************************************/
 function changeLanguage(language) {
-	if (language.value=='en') { // require a URL
-	    window.location.href = "?locale=en"; // redirect
+	if (language.value=='fr') { // require a URL
+	    window.location.href = "?locale=fr"; // redirect
 	}else{
-		  window.location.href = "?locale=fr";
+		  window.location.href = "?locale=en";
 	}
 }
 function closePopup(){

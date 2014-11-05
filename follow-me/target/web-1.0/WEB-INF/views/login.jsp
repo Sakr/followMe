@@ -2,9 +2,11 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<c:if test="${not empty error}">
+	<div id="login-error">${error}</div>
+</c:if>
 
-<div id="login-error">${error}</div>
-
+<c:url value="/addAcount" var="addAcountURL" />
 <form action="j_spring_security_check" class="login" method="post" >
 
 <img class="logo" src="<c:url value="resources/images/logo.png" />">
@@ -14,6 +16,6 @@
 	<input class = "input" placeholder="Password" id="j_password" name="j_password" type="password" />
 
 	<input class = "submit" value = "SIGN IN"  type="submit" />								
-	<a class = "createAccount" href="#">Create an account</a>
+	<a class = "createAccount" href="${addAcountURL}">Create an account</a>
 </form>
 

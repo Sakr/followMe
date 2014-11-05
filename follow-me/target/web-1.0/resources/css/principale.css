@@ -685,29 +685,6 @@ svg {
 
 
 
-@font-face {
-    font-family: 'montserratbold';
-    src: url('montserrat-bold-webfont.eot');
-    src: url('montserrat-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('montserrat-bold-webfont.woff2') format('woff2'),
-         url('montserrat-bold-webfont.woff') format('woff'),
-         url('montserrat-bold-webfont.ttf') format('truetype'),
-         url('montserrat-bold-webfont.svg#montserratbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'montserratregular';
-    src: url('montserrat-regular-webfont.eot');
-    src: url('montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('montserrat-regular-webfont.woff2') format('woff2'),
-         url('montserrat-regular-webfont.woff') format('woff'),
-         url('montserrat-regular-webfont.ttf') format('truetype'),
-         url('montserrat-regular-webfont.svg#montserratregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 
 
 
@@ -1117,6 +1094,161 @@ display: block;
    
 }
 */
+
+/* ==============================================
+   FEUILLE DE STYLES SPECIAL POP UP
+   ============================================== */
+   
+body {
+	padding: 0px 0px;
+	background: #ffffff;
+}
+
+#sous_navigation {
+    display: none;
+}
+
+/* ------------------------------- */ 
+/*           =  CONTENU            */
+/* ------------------------------- */ 
+
+#contenu {
+	width: 940px;
+}
+
+#contenu_onglets {
+	width: 936px;
+}
+
+/* ------------------------------- */ 
+/*           =  FORMULAIRES        */
+/* ------------------------------- */ 
+
+#bottomButton{
+	margin-left: 60px;
+	display: inline-block
+}
+
+.deleteText{
+	font-family : montserratregular;
+	font-size : 14px;
+	text-align: center;
+	color: #4B6E83;
+}
+.deleteButton {
+    font-family : montserratbold;
+	font-size : 12px;
+	color : #FFFFFF;
+    text-align:center;
+    
+    border-radius:6px;
+    font-size: 12px;
+
+    border : none;
+    outline: none;
+    /*display: inline-block;*/
+
+    background : #CD1C24;
+	width : 130px;
+	height : 33px;
+}
+
+.deleteButton:hover {
+    background : #D74950;
+}
+
+.cancel{
+	font-family : montserratregular;
+	font-size : 12px;
+	color : #999999;
+	color : rgb(153, 153, 153);
+	text-decoration: none;
+	margin-left: 10px;
+	border:none;
+	outline:none;
+	background:none;
+}
+
+.cancel:hover{
+	color : #CD1C24;
+	color : rgb(205, 28, 36);
+}
+
+
+.inputmodify{
+	font-family : montserratregular;
+  	font-size : 12px;
+  	color : #4B6E83;
+  	margin-bottom: 10px;
+	padding-left: 15px;
+	border-style : Solid;
+	border-color : #B3B3B3;
+	border-color : rgba(179, 179, 179, 1);
+	border-width : 1px;
+	width : 256px;
+	height : 33px;
+	border-radius : 6px;
+
+	display:inline-block;
+	vertical-align: top;
+}
+
+.inputmodify:focus{
+ 	outline: none;
+ 	border-style : Solid;
+  	border-color : #0097D7;
+ }
+
+.buttonmodify {
+    font-family : montserratregular;
+	font-weight : bold;
+	font-size : 12px;
+	color : #FFFFFF;
+    text-align:center;
+    
+    border-radius:6px;
+    font-size: 12px;
+
+    border : none;
+    outline: none;
+    /*display: inline-block;*/
+
+    background : #0097D7;
+	width : 130px;
+	height : 33px;
+	
+	margin-left:39px;
+}
+
+.buttonmodify:hover {
+    background : #33ACDF;
+}
+
+.picto{
+	height : 25px;
+	width: 25px;
+	display:inline-block;
+	vertical-align: top;
+	margin-top: 5px;
+}
+
+.titleModify{
+	font-family : montserratbold;
+	font-size : 18px;
+	color : #4B6E83;
+	color : rgb(75, 110, 131);
+	margin-left: 40px;
+	margin-bottom: 30px;
+}
+
+.labelmodify{
+	font-family : montserratregular;
+	font-weight : bold;
+	font-size : 12px;
+	color : #4B6E83;
+	margin-left:39px;
+}
+
 
 
 
