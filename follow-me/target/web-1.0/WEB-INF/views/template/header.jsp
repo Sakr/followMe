@@ -3,19 +3,21 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
 
+<table class="tableHeader">
+    <tr>
+        <td><img class="activityResume" src="resources/images/activityResume.png" onclick="activityBox(this);"/><img class="notification" src="resources/images/notifications/notification-01.png"/></td>
+        <td><img class="logo" src="resources/images/logo.png"></td>
+        <td><img class="account" src="resources/images/img_profil.png" onclick="accountBox(this);"/></td>
+    </tr>
+</table>
+
+<!--
 <img class="activityResume" src="resources/images/activityResume.png" onclick="activityBox(this);"/>
 <img class="account" src="resources/images/img_profil.png" onclick="accountBox(this);"/>
 <div>
   <img class="logo" src="resources/images/logo.png">
 </div>
-<div class="langueSelection">
-	<p class="langue">
-		<label><spring:message code="home.langue"/></label>
-		<select id="idLanguage" onchange="changeLanguage(this)" >
-			<option value="lang" label="" selected="selected" />
-			<option value="fr" label="Français"  />
-			<option value="en" label="English" />	
-		</select>
-	</p>		
-</div>
-<a href="<c:url value="/logout"/>"><spring:message code="principal.deconnexion" /></a>
+
+ 
+<a href="<c:url value="/logout"/>"><spring:message code="parincipal.deconnexion" /></a>
+ -->

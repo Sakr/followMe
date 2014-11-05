@@ -6,6 +6,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:url value="?locale=fr" var="francais" />
+<c:url value="?locale=en" var="english" />
+
 <head>
 
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
@@ -16,6 +19,13 @@
 
 
 <body>
+	<table class="tableFlag">
+        <tr>
+            <td><a href="${francais}"><img class="languageFlag" src="resources/images/drapeau-fr.png"/></a></td>
+            <td><a href="${english}"><img class="languageFlag" src="resources/images/drapeau-en.png"/></a></td>
+        </tr>
+    </table>
+    
 	<tiles:insertAttribute name="content" />
 </body>
 </html>

@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.esiea.web.model.User;
-
 /**
- * Handles and retrieves the common or admin page depending on the URI template.
- * A user must be log-in first he can access these pages.  Only the admin can see
- * the adminpage, however.
+ * @author sakr
+ *
  */
 @Controller
 @SessionAttributes({"error","connectedUser"})
@@ -23,11 +21,6 @@ public class MainController extends ConfigController{
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	/**
-	 * Handles and retrieves the common JSP page that everyone can see
-	 * 
-	 * @return the name of the JSP page
-	 */
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public ModelAndView getCommonPage(@RequestParam(value="error", required=false) boolean error,
     		ModelMap model) {
@@ -38,7 +31,7 @@ public class MainController extends ConfigController{
     	}else{
     		connectedUser=this.getCurrentUserSession();
     	}
-        
+    	
         ModelAndView mav;
         if(error){
         	model.put("error",messages.getString( "login.failed.userOrPassword"));
@@ -58,11 +51,6 @@ public class MainController extends ConfigController{
     	return mav;
 	}
     
-    /**
-     * Handles and retrieves the admin JSP page that only admins can see
-     * 
-     * @return the name of the JSP page
-     */
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ModelAndView getAdminPage() {
     	

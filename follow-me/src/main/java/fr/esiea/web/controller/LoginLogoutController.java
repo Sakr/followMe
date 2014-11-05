@@ -11,18 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 /**
- * Handles and retrieves the login or denied page depending on the URI template
+ * @author sakr
+ *
  */
 @Controller
 public class LoginLogoutController {
         
 	private static final Logger logger = LoggerFactory.getLogger(LoginLogoutController.class);
 
-	/**
-	 * @return the name of the JSP page
-	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView getLoginPage(@RequestParam(value="error", required=false) boolean error, 
 			ModelMap model) {
@@ -37,9 +34,6 @@ public class LoginLogoutController {
 		return mav;
 	}
 	
-	/**
-	 * @return the name of the JSP page
-	 */
 	@RequestMapping(value = "/denied", method = RequestMethod.GET)
  	public ModelAndView getDeniedPage() {
 		logger.debug("Received request to show denied page");

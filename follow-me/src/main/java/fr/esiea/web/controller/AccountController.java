@@ -1,6 +1,7 @@
 package fr.esiea.web.controller;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,23 +11,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
-
-
+import org.springframework.web.servlet.ModelAndView;
 
 import fr.esiea.web.bean.AccountFormBean;
 import fr.esiea.web.model.Adress;
 import fr.esiea.web.model.User;
 import fr.esiea.web.service.AdressService;
+import fr.esiea.web.service.LongitudeLatitudeService;
 import fr.esiea.web.service.UserService;
-
+/**
+ * @author sakr
+ *
+ */
 @Controller
 @SessionAttributes({"accountFormBean","statutAccount"})
 public class AccountController extends ConfigController{
@@ -50,8 +50,15 @@ public class AccountController extends ConfigController{
 	    adress.setPostcode(new Integer(accountFormBean.getPostcode()));
 	    adress.setCity(accountFormBean.getCity());
 	    adress.setEstablishment(accountFormBean.getEstablishment());
-	    adress.setLatitude(new Double("0"));
-	    adress.setLongitude(new Double("0"));
+	    
+	    //On recupere la longitude et la latitude en fonction de l'adresse de l'utilisateur
+	    LongitudeLatitudeService directionService = new LongitudeLatitudeService();
+        Map<String,Double> logLatMap= directionService.getLongitudeLatitude(adress);
+	    
+	    adress.setLatitude(logLatMap.get("latitude"));
+	    adress.setLongitude(logLatMap.get("longitude"));
+	    
+	    
 	    adress.setEstablishment(accountFormBean.getEstablishment());
 	    
 	    //On recupere les donnees du formulaire
