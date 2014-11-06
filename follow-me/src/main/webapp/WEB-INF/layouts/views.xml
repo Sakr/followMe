@@ -24,8 +24,8 @@
 	    <put-attribute name="content"	value="/WEB-INF/views/denied.jsp" />
 	</definition>
 	
-	<definition name="" extends="layoutPopin">
-		<put-attribute name="content"	value="" />
+	<definition name="addActivityView" extends="layoutPopin">
+		<put-attribute name="content"	value="/WEB-INF/views/popup/createActivity.jsp" />
 	</definition>
 	
 </tiles-definitions>

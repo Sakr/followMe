@@ -5,19 +5,11 @@
 
 <table class="tableHeader">
     <tr>
-        <td><img class="activityResume" src="resources/images/activityResume.png" onclick="activityBox(this);"/><img class="notification" src="${imageNotification}"/></td>
+    	<c:if test="${not empty imageNotification}">
+			<td><img class="activityResume" src="resources/images/activityResume.png" onclick="activityBox(this);"/><img class="notification" src="${imageNotification}"/></td>
+		</c:if>
+        
         <td><img class="logo" src="resources/images/logo.png"></td>
         <td><img class="account" src="resources/images/img_profil.png" onclick="accountBox(this);"/></td>
     </tr>
 </table>
-
-<!--
-<img class="activityResume" src="resources/images/activityResume.png" onclick="activityBox(this);"/>
-<img class="account" src="resources/images/img_profil.png" onclick="accountBox(this);"/>
-<div>
-  <img class="logo" src="resources/images/logo.png">
-</div>
-
- 
-<a href="<c:url value="/logout"/>"><spring:message code="parincipal.deconnexion" /></a>
- -->

@@ -16,6 +16,7 @@ public class AccountFormBean implements Serializable{
 	private String password;
 	private byte[] photo;
 	private String phoneNumber;
+	
 	private String number;
 	private String street;
 	private String establishment;

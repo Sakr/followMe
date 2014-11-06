@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import fr.esiea.web.bean.ActivityFormBean;
 import fr.esiea.web.bean.NotificationsFormBean;
 import fr.esiea.web.model.ActivityDetail;
 import fr.esiea.web.model.ActivityParticipants;
@@ -28,7 +29,7 @@ import fr.esiea.web.service.ActivityParticipantsService;
  *
  */
 @Controller
-@SessionAttributes({"error","connectedUser","activityDetailList","notificationsFormBeanList","imageNotification","notification"})
+@SessionAttributes({"error","connectedUser","activityDetailList","notificationsFormBeanList","imageNotification","notification","activityFormBean"})
 public class MainController extends ConfigController{
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
@@ -120,7 +121,11 @@ public class MainController extends ConfigController{
     	}
     	model.put("notificationsFormBeanList", notificationsFormBeanList);
     	String extention=".png";
-    	String path="resources/images/notifications/notification-0"+notificationsFormBeanList.size()+extention;
+    	String path=null;
+    	if(notificationsFormBeanList.size()!=0){
+    		path="resources/images/notifications/notification-0"+notificationsFormBeanList.size()+extention;
+    	}
+    	
     	model.put("imageNotification", path);
     }
     
@@ -143,4 +148,16 @@ public class MainController extends ConfigController{
 		getDataForUser(model);
     	return mav;
 	}
+    
+    @RequestMapping(value = "/addActivity", method = RequestMethod.GET)
+    public ModelAndView addActivity(ModelMap model) {
+    	
+    	ActivityFormBean activityFormBean=new ActivityFormBean();
+    	ModelAndView  mav = new ModelAndView("addActivityView");
+    	model.put("activityFormBean", activityFormBean);
+		getDataForUser(model);
+    	return mav;
+	}
+   
+    
 }

@@ -184,11 +184,14 @@
 
 
 
-	<a href="<c:url value="/logout"/>"> <spring:message
-			code="parincipal.deconnexion" var="deconnexion" /> <input
-		class="button" type="submit" value="${deconnexion}" />
+	<a href="<c:url value="/logout"/>"> 
+		<spring:message code="parincipal.deconnexion" var="deconnexion" /> 
+		<input class="button" type="submit" value="${deconnexion}" />
 	</a>
-
+	<a class="lien iframe" href="<c:url value="/addActivity"/>"> 
+		<spring:message code="add.activity" var="addActivity" /> 
+		<input class="button" type="submit" value="${addActivity}" />
+	</a>
 	<table class="tableFlagMain">
 		<tr>
 			<td><a href="${francais}"><img class="languageFlag"
