@@ -165,7 +165,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 	<beans:bean id="activityNameDAO" class="fr.esiea.web.dao.ActivityNameDaoImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="ActivityNameService" class="fr.esiea.web.service.ActivityNameServiceImpl">
+	<beans:bean id="activityNameService" class="fr.esiea.web.service.ActivityNameServiceImpl">
 		<beans:property name="activityNameDAO" ref="activityNameDAO"></beans:property>
 	</beans:bean>
 	
@@ -173,7 +173,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 	<beans:bean id="activityCategoryDAO" class="fr.esiea.web.dao.ActivityCategoryDaoImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="activityCategoryDAOService" class="fr.esiea.web.service.ActivityCategoryServiceImpl">
+	<beans:bean id="activityCategoryService" class="fr.esiea.web.service.ActivityCategoryServiceImpl">
 		<beans:property name="activityCategoryDAO" ref="activityCategoryDAO"></beans:property>
 	</beans:bean>
 	

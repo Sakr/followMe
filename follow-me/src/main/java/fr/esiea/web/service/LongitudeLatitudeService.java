@@ -42,11 +42,12 @@ public class LongitudeLatitudeService {
      * @return
      */
     public Map<String,Double> getLongitudeLatitude(Adress addressEntity) {
+    	Map<String,Double> longLatMap=new HashMap<String, Double>();
         try {
         	
         	String adress=addressEntity.getNumber()+" "+addressEntity.getStreet()+" "+addressEntity.getPostcode()+" "+addressEntity.getCity();
             
-        	Map<String,Double> longLatMap=new HashMap<String, Double>();
+        	
         	
         	StringBuilder urlBuilder = new StringBuilder(GEOCODE_REQUEST_URL);
             if (StringUtils.isNotBlank(adress)) {
@@ -91,7 +92,7 @@ public class LongitudeLatitudeService {
         } catch (Exception e) {
              e.printStackTrace();
         }
-		return null;
+		return longLatMap;
     }
     /**
      * 

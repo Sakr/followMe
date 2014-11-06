@@ -21,6 +21,7 @@ public class ActivityParticipants implements Serializable{
 	private int id;
 	private ActivityDetail activityDetail;
 	private User participant;
+	private boolean accepted;
 
 	/**
 	 * 
@@ -65,6 +66,16 @@ public class ActivityParticipants implements Serializable{
 
 	public void setParticipant(User participant) {
 		this.participant = participant;
+	}
+
+	
+	@Column(name="accepted")
+	public boolean getAccepted() {
+		return accepted;
+	}
+
+	public void setAccepted(boolean accepted) {
+		this.accepted = accepted;
 	}
 
 	@Override

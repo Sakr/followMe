@@ -14,5 +14,5 @@
 <!-- API Map -->
 <script type="text/javascript" src="<c:url value="/resources/js/api-map.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/infobox.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/pin.js"/>"></script>
+<%-- <script type="text/javascript" src="<c:url value="/resources/js/pin.js"/>"></script> --%>
 

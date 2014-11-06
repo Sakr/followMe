@@ -82,8 +82,7 @@ public class AccountController extends ConfigController{
 	    userService.createUser(user);
 	    
 	    //On envoi un mail d'acticvation a l'utilisateur account.activation.text
-	    this.sendEmail(messages.getString("account.activation.link"), getActivationUrlByUser(user), user.getMail());
-	    this.sendEmail(messages.getString("account.activation.link"), messages.getString("account.activation.text"), user.getMail());
+	    this.sendEmail(messages.getString("account.activation.link"), getActivationUrlByUser(user,messages.getString("account.activation.text")), user.getMail());
 	    String statutAccount=messages.getString("account.save.succed");
 		
 		model.put("accountFormBean", accountFormBean);
@@ -107,13 +106,21 @@ public class AccountController extends ConfigController{
 		return mav;
 	}
 	
-	public String getActivationUrlByUser(User user){
+	
+	@RequestMapping(value = "/resetAcount")
+	public ModelAndView resetAcount(ModelMap model) {
+		
+	    ModelAndView mav = new ModelAndView("login");
+		return mav;
+	}
+	
+	public String getActivationUrlByUser(User user,String text){
 		
 	    HttpServletRequest request=((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
 		System.out.println(request.getServletPath()); 
 		String scheme = request.getScheme()+"://";             // http
 		String host = request.getHeader("host");     // localhost:8888
-		String generatedUrl = " <a href=\" "+ scheme+host+"/web/"+"activateAccount?pin="+user.getActivationCode() +" \">"+ messages.getString("account.activation.link") +"</a>";
+		String generatedUrl = messages.getString("account.activation.link")+": "+text+" "+  scheme+host+"/web/"+"activateAccount?pin="+user.getActivationCode() ;
 		return generatedUrl;
 	}
 }

@@ -23,7 +23,7 @@ public class ActivityParticipantsDaoImpl implements ActivityParticipantsDao{
 	@Override
 	public List<ActivityParticipants> getAllActivityParticipant() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<ActivityParticipants> ActivityParticipantList = session.createQuery("from ActivityParticipant").list();
+		List<ActivityParticipants> ActivityParticipantList = session.createQuery("from ActivityParticipants").list();
 		for(ActivityParticipants p : ActivityParticipantList){
 			logger.info("ActivityParticipant List::"+p);
 		}

@@ -12,42 +12,42 @@ import fr.esiea.web.model.ActivityDetail;
 public class ActivityDetailServiceImpl implements ActivityDetailService{
 
 
-	private ActivityDetailDao ActivityDetailDao;
+	private ActivityDetailDao activityDetailDao;
 
 	public void setActivityDetailDAO(ActivityDetailDao activityDetailDao) {
-		this.ActivityDetailDao = activityDetailDao;
+		this.activityDetailDao = activityDetailDao;
 	}
 
 	@Override
 	@Transactional
 	public List<ActivityDetail> listActivityDetail() {
-		return this.ActivityDetailDao.getAllActivityDetail();
+		return this.activityDetailDao.getAllActivityDetail();
 	}
 
 	@Override
 	@Transactional
 	public ActivityDetail getActivityDetailById(int id) {
-		return this.ActivityDetailDao.getActivityDetailById(id);
+		return this.activityDetailDao.getActivityDetailById(id);
 	}
 
 	@Override
 	@Transactional
 	public void createActivityDetail(ActivityDetail activityDetail) {
-		this.ActivityDetailDao.createActivityDetail(activityDetail);
+		this.activityDetailDao.createActivityDetail(activityDetail);
 		
 	}
 
 	@Override
 	@Transactional
 	public void updateActivityDetail(ActivityDetail activityDetail) {
-		this.ActivityDetailDao.updateActivityDetail(activityDetail);
+		this.activityDetailDao.updateActivityDetail(activityDetail);
 		
 	}
 
 	@Override
 	@Transactional
 	public void deleteActivityDetail(int id) {
-		this.ActivityDetailDao.deleteActivityDetail(id);
+		this.activityDetailDao.deleteActivityDetail(id);
 	}
 
 }

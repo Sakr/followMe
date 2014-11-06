@@ -158,17 +158,22 @@
 <div id="searchBar" style="display: none" class="searchBar">
 	<input type="text"></input>
 </div>
-
+<c:url value="/accept" var="acceptParticipant" />
 
 <div id="activityBox" style="display: none;">
 	</br>
 	<!--  <input class = "button" type="submit" value="Ajouter une activité" onclick="addMarker('resources/images/skate.png', {37.7699298; -122.4469157}); addMarker('image/pin_sport.png', 38.7699298, -122.4469157);"/>
       	-->
 	<spring:message code="principal.accept" var="accept" />
-	<div>
-		<span class="participant">Gaston - Footing du 13/09</span> <input
-			class="accept" type="submit" value="${accept}" />
-	</div>
+	<c:forEach items="${notificationsFormBeanList}" var="notification" varStatus="status">
+				<c:url value="/accept?index=${status.index}" var="acceptParticipant" />
+				<div>
+					<span class="participant">${notification.labelNotification}</span> 
+					<input  class="accept" name="rechercher" id="rechercher" value="${accept}" onclick="javascript:doGet('${acceptParticipant}')"/> 
+				</div>
+		        
+	</c:forEach>
+	
 
 
 

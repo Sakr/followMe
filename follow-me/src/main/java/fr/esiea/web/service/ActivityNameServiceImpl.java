@@ -12,41 +12,41 @@ import fr.esiea.web.model.ActivityName;
 public class ActivityNameServiceImpl implements ActivityNameService{
 
 
-	private ActivityNameDao ActivityNameDao;
+	private ActivityNameDao activityNameDao;
 
 	public void setActivityNameDAO(ActivityNameDao activityNameDao) {
-		this.ActivityNameDao = activityNameDao;
+		this.activityNameDao = activityNameDao;
 	}
 
 	@Override
 	@Transactional
 	public List<ActivityName> listActivityName() {
-		return this.ActivityNameDao.getAllActivityName();
+		return this.activityNameDao.getAllActivityName();
 	}
 
 	@Override
 	@Transactional
 	public ActivityName getActivityNameById(int id) {
-		return this.ActivityNameDao.getActivityNameById(id);
+		return this.activityNameDao.getActivityNameById(id);
 	}
 
 	@Override
 	@Transactional
 	public void createActivityName(ActivityName activityName) {
-		this.ActivityNameDao.createActivityName(activityName);
+		this.activityNameDao.createActivityName(activityName);
 		
 	}
 
 	@Override
 	@Transactional
 	public void updateActivityName(ActivityName activityName) {
-		this.ActivityNameDao.updateActivityName(activityName);
+		this.activityNameDao.updateActivityName(activityName);
 		
 	}
 
 	@Override
 	@Transactional
 	public void deleteActivityName(int id) {
-		this.ActivityNameDao.deleteActivityName(id);
+		this.activityNameDao.deleteActivityName(id);
 	}
 }

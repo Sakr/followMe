@@ -5,7 +5,7 @@
 
 <table class="tableHeader">
     <tr>
-        <td><img class="activityResume" src="resources/images/activityResume.png" onclick="activityBox(this);"/><img class="notification" src="resources/images/notifications/notification-01.png"/></td>
+        <td><img class="activityResume" src="resources/images/activityResume.png" onclick="activityBox(this);"/><img class="notification" src="${imageNotification}"/></td>
         <td><img class="logo" src="resources/images/logo.png"></td>
         <td><img class="account" src="resources/images/img_profil.png" onclick="accountBox(this);"/></td>
     </tr>

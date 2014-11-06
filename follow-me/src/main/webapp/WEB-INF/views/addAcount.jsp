@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <c:url value="/saveAcount" var="saveAcountURL" />
+<c:url value="/resetAcount" var="resetURL" />
 <!-- Gestion des doublons -->
 <c:if test="${not empty statutAccount}">
 	<div class="" >${statutAccount}</div>
