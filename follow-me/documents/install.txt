@@ -1,0 +1,23 @@
+Installer Wamp Server
+Lancer le script "create_db_followMe.sql" sur phpMyAdmin (Script de création de la base de données de de, ses tables).
+
+Pour se connecter à la base de donnée, l'application attend la configuration suivante,
+localhost:3306/followme
+username: root
+pasword: (Vide)
+
+Installer les outils suivants
+ 
+eclipse Luna
+jdk1.7.0_67
+apache-maven-3.2.3
+apache-tomcat-8.0.12 
+
+L'application est telechargeable à partir du lien suivant sur Guithub: https://github.com/Sakr/followMe
+
+- "Clean install" dans les run configuration d'eclipse
+- "mvn clean install" à partir d'une console en pointant sur le fichier contenant le POM.xml
+
+Une fois que l'application est déployé sur TOMCAT, elle sera accessible sur l'URL suivant: http://localhost:8080/web/
+
+
