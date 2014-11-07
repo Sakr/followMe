@@ -23,7 +23,7 @@
 		<form:input required="required" class = "input" type = "email" path="mail" id="idMail" placeholder="${mail}"/>
 			
 		<spring:message code="account.phoneNumber" var="phoneNumber"/>
-		<form:input required="required" class = "input" type = "number"  path="phoneNumber" id="idPhoneNumber" placeholder="${phoneNumber}"/>
+		<form:input required="required" class = "input" type = "number"  path="phoneNumber" id="idPhoneNumber" placeholder="${phoneNumber}" min="0" max="0799999999"/>
 										
 
 		
@@ -36,13 +36,13 @@
 
 
 		<spring:message code="account.number" var="number"/>
-		<form:input required="required" class = "input" type = "number" path="number" id="idAdressNumber" placeholder="${number}" value=""/>	
+		<form:input required="required" class = "input" type = "number" path="number" id="idAdressNumber" placeholder="${number}" value="" min="0"/>	
 					
 		<spring:message code="account.streetName" var="streetName"/>
 		<form:input required="required" class = "input" type = "text"  path="street" id="idAdressStreetName" placeholder="${streetName}"/>			
 		
 		<spring:message code="account.postcode" var="zipCode"/>
-		<form:input required="required" class = "input" type = "number" path="postcode" id="idCodeAdess" placeholder="${zipCode}" value=""/>
+		<form:input required="required" class = "input" type = "number" path="postcode" id="idCodeAdess" placeholder="${zipCode}" value="" min="0" max="99999"/>
 
 		<spring:message code="account.cityAdress" var="city"/>
 		<form:input required="required" class = "input" type = "text" path="city" id="idCityAdress" placeholder="${city}"/>

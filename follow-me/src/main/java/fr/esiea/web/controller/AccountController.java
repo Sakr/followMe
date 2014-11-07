@@ -18,6 +18,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.esiea.web.bean.AccountFormBean;
+import fr.esiea.web.model.ActivityDetail;
 import fr.esiea.web.model.Adress;
 import fr.esiea.web.model.User;
 import fr.esiea.web.service.AdressService;
@@ -49,7 +50,7 @@ public class AccountController extends ConfigController{
 	    adress.setStreet(accountFormBean.getStreet());
 	    adress.setPostcode(new Integer(accountFormBean.getPostcode()));
 	    adress.setCity(accountFormBean.getCity());
-	    adress.setEstablishment(accountFormBean.getEstablishment());
+	    adress.setEstablishment("");
 	    
 	    //On recupere la longitude et la latitude en fonction de l'adresse de l'utilisateur
 	    LongitudeLatitudeService directionService = new LongitudeLatitudeService();
@@ -59,7 +60,7 @@ public class AccountController extends ConfigController{
 	    adress.setLongitude(logLatMap.get("longitude"));
 	    
 	    
-	    adress.setEstablishment(accountFormBean.getEstablishment());
+	    adress.setEstablishment("");
 	    
 	    //On recupere les donnees du formulaire
 	    User user=new User();
@@ -74,7 +75,6 @@ public class AccountController extends ConfigController{
 	    user.setPhoneNumber(new Integer(accountFormBean.getPhoneNumber()));
 	    user.setDisabled(true);
 	    user.setDateCreation(new Date());
-	    
 	    
 	    String randomActivationCode = UUID.randomUUID().toString();
 	    user.setActivationCode(randomActivationCode);

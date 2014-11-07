@@ -2,9 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<c:if test="${not empty error}">
-	<div id="login-error">${error}</div>
-</c:if>
+
 
 <c:url value="/addAcount" var="addAcountURL" />
 <form action="j_spring_security_check" class="login" method="post" >
@@ -24,4 +22,8 @@
 								
 	<a class = "createAccount" href="${addAcountURL}"><spring:message code="login.createaccount"/></a>
 </form>
+
+<c:if test="${not empty error}">
+	<p class="error" id="login-error">${error}</p>
+</c:if>
 

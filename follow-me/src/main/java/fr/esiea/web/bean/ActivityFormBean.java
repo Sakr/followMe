@@ -1,7 +1,11 @@
 package fr.esiea.web.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import fr.esiea.web.model.ActivityName;
 
 
 public class ActivityFormBean implements Serializable{
@@ -11,14 +15,14 @@ public class ActivityFormBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 7090920111733626331L;
 	
-	private int participantsNumber;
-	private int availablePlaces;
+	private String participantsNumber;
+	private String availablePlaces;
 	private String description;
 	private Date dateCreation;
 	private Date effectiveDate;
 	private String nameActivity;
-	private int duration;
-	private int difficulty;
+	private String duration;
+	private String difficulty;
 	
 	private String number;
 	private String street;
@@ -26,9 +30,9 @@ public class ActivityFormBean implements Serializable{
 	private String city;
 	private String postcode;
 	
-	private int activityNameId;
+	private String activityNameId;
 
-	
+	private List<ActivityName> listNameActivity=new ArrayList<ActivityName>();
 	
 	/**
 	 * 
@@ -37,19 +41,19 @@ public class ActivityFormBean implements Serializable{
 		super();
 	}
 
-	public int getParticipantsNumber() {
+	public String getParticipantsNumber() {
 		return participantsNumber;
 	}
 
-	public void setParticipantsNumber(int participantsNumber) {
+	public void setParticipantsNumber(String participantsNumber) {
 		this.participantsNumber = participantsNumber;
 	}
 
-	public int getAvailablePlaces() {
+	public String getAvailablePlaces() {
 		return availablePlaces;
 	}
 
-	public void setAvailablePlaces(int availablePlaces) {
+	public void setAvailablePlaces(String availablePlaces) {
 		this.availablePlaces = availablePlaces;
 	}
 
@@ -85,19 +89,19 @@ public class ActivityFormBean implements Serializable{
 		this.nameActivity = nameActivity;
 	}
 
-	public int getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(int duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 
-	public int getDifficulty() {
+	public String getDifficulty() {
 		return difficulty;
 	}
 
-	public void setDifficulty(int difficulty) {
+	public void setDifficulty(String difficulty) {
 		this.difficulty = difficulty;
 	}
 
@@ -141,16 +145,19 @@ public class ActivityFormBean implements Serializable{
 		this.postcode = postcode;
 	}
 
-	public int getActivityNameId() {
+	public String getActivityNameId() {
 		return activityNameId;
 	}
 
-	public void setActivityNameId(int activityNameId) {
+	public void setActivityNameId(String activityNameId) {
 		this.activityNameId = activityNameId;
 	}
-	
-	
-	
-	
-	
+
+	public List<ActivityName> getListNameActivity() {
+		return listNameActivity;
+	}
+
+	public void setListNameActivity(List<ActivityName> listNameActivity) {
+		this.listNameActivity = listNameActivity;
+	}
 }

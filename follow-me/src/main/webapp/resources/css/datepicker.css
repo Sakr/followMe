@@ -133,7 +133,7 @@ a.date-picker-control
         }
 a.date-picker-control span
         {
-        display:block;
+        display:inline-block;
         width:16px;
         height:16px;
         margin:auto 0;

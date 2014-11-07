@@ -1,9 +1,10 @@
 package fr.esiea.web.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
-import org.apache.commons.collections.set.CompositeSet.SetMutator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,15 @@ import org.springframework.web.servlet.ModelAndView;
 import fr.esiea.web.bean.ActivityFormBean;
 import fr.esiea.web.bean.NotificationsFormBean;
 import fr.esiea.web.model.ActivityDetail;
+import fr.esiea.web.model.ActivityName;
 import fr.esiea.web.model.ActivityParticipants;
+import fr.esiea.web.model.Adress;
 import fr.esiea.web.model.User;
 import fr.esiea.web.service.ActivityDetailService;
 import fr.esiea.web.service.ActivityNameService;
 import fr.esiea.web.service.ActivityParticipantsService;
+import fr.esiea.web.service.LongitudeLatitudeService;
+import fr.esiea.web.service.UserService;
 /**
  * @author sakr
  *
@@ -78,6 +83,9 @@ public class MainController extends ConfigController{
 	private ActivityParticipantsService activityParticipantsService;
     @Autowired
     private ActivityNameService activityNameService;
+    @Autowired
+    private UserService userService;
+    
     
     public void getDataForUser(ModelMap model){
     	
@@ -86,46 +94,40 @@ public class MainController extends ConfigController{
     	model.put("connectedUser", connectedUser);
     	
     	//On recupere la liste des activites a afficher 
-    	List<ActivityDetail>allActivityDetailList= activityDetailService.listActivityDetail();
+    	List<ActivityDetail>allActivityDetailList=new ArrayList<ActivityDetail>();
+    	allActivityDetailList=activityDetailService.listActivityDetail();
     	model.put("activityDetailList", allActivityDetailList);
     	
     	//On recupere les activites de l'utilisateur pour voir si il a recu des demandes de participations a ses activité
     	List<ActivityDetail>userActivityDetailList=new ArrayList<ActivityDetail>();
     	for(ActivityDetail activityDetail:allActivityDetailList){
-    		if(activityDetail.getCreator().getId()==connectedUser.getId()){
-    			//On recupere la liste des activites
-    			userActivityDetailList.add(activityDetail);
-    		}
+    		userActivityDetailList.add(activityDetail);
     	}
     	//Si l'utilisateur a deja crée des activites 
-    	NotificationsFormBean notificationsFormBean=null;
+    	NotificationsFormBean notificationsFormBean=new NotificationsFormBean();
     	List<NotificationsFormBean>notificationsFormBeanList=new ArrayList<NotificationsFormBean>();
-    	if(userActivityDetailList.size()!=0){
-    		//On verifie si il a des participants a ses activites
-    		List<ActivityParticipants> listActivityParticipants=activityParticipantsService.listActivityParticipants();
-    		for(ActivityDetail activityDetail: userActivityDetailList){
-    			for(ActivityParticipants activityParticipants: listActivityParticipants){
-    				if(activityDetail.getId()==activityParticipants.getActivityDetail().getId()){
-    					//On verfie si l'utilisateur n'est pas deja accepté
-    					if(!activityParticipants.getAccepted()){
-    						notificationsFormBean=new NotificationsFormBean();
-        					notificationsFormBean.setIdActivityParticipant(activityParticipants.getId());
-        					notificationsFormBean.setIdUser(activityParticipants.getParticipant().getId());
-        					notificationsFormBean.setMail(activityParticipants.getParticipant().getMail());
-        					notificationsFormBean.setLabelNotification(activityNameService.getActivityNameById(activityDetail.getId()).getName()+" - "+activityDetail.getDateCreation()+":  "+activityParticipants.getParticipant().getName()+" "+activityParticipants.getParticipant().getFirstName());
-        					notificationsFormBeanList.add(notificationsFormBean);
-    					}
-    				}
-    			}
-    		}
-    	}
+		List<ActivityParticipants> listActivityParticipants=activityParticipantsService.listActivityParticipants();
+			for(ActivityParticipants activityParticipants: listActivityParticipants){
+				//On verfie si l'utilisateur n'est pas deja accepté
+				if(!activityParticipants.getAccepted()){
+					notificationsFormBean=new NotificationsFormBean();
+					notificationsFormBean.setIdActivityParticipant(activityParticipants.getId());
+					notificationsFormBean.setIdUser(activityParticipants.getParticipant().getId());
+					notificationsFormBean.setMail(activityParticipants.getParticipant().getMail());
+					notificationsFormBean.setLabelNotification(activityNameService.getActivityNameById(2).getName()+" :  "+activityParticipants.getParticipant().getName()+" "+activityParticipants.getParticipant().getFirstName());
+					notificationsFormBeanList.add(notificationsFormBean);
+				}
+			}
+    	
     	model.put("notificationsFormBeanList", notificationsFormBeanList);
+    	
+    	//On ajoute l'image de notification
+    	//TODO a gerer avec la base de donnée
     	String extention=".png";
-    	String path=null;
+    	String path="";
     	if(notificationsFormBeanList.size()!=0){
     		path="resources/images/notifications/notification-0"+notificationsFormBeanList.size()+extention;
     	}
-    	
     	model.put("imageNotification", path);
     }
     
@@ -142,10 +144,11 @@ public class MainController extends ConfigController{
     	//On enregistre sur la base de donnée
     	activityParticipantsService.updateActivityParticipants(activityParticipants);
     	
+    	//On envoi un mail a l'utilisateur accépté
     	this.sendEmail(notificationsFormBeanList.get(index).getLabelNotification(), messages.getString("participant.accepted.text"), notificationsFormBeanList.get(index).getMail());
     	
     	ModelAndView  mav = new ModelAndView("user");
-		getDataForUser(model);
+    	
     	return mav;
 	}
     
@@ -154,10 +157,63 @@ public class MainController extends ConfigController{
     	
     	ActivityFormBean activityFormBean=new ActivityFormBean();
     	ModelAndView  mav = new ModelAndView("addActivityView");
-    	model.put("activityFormBean", activityFormBean);
-		getDataForUser(model);
+    	
+    	List<ActivityName> liActivityNames= activityNameService.listActivityName();
+    	activityFormBean.setListNameActivity(liActivityNames);
+    	model.put("activityFormBean", activityFormBean);	
     	return mav;
 	}
-   
+    
+    @RequestMapping(value = "/saveAddActivity")
+    public ModelAndView saveAddActivity(ModelMap model,
+    		@ModelAttribute("activityFormBean")ActivityFormBean activityFormBean) {
+    	
+    	//On recupere le createur de l'activite
+    	User connectedUser=this.getCurrentUserSession();
+    	//On recupere les donnees de l'adresse a partir du formulaire
+	    Adress adress=new Adress();
+	    adress.setNumber(new Integer(activityFormBean.getNumber()));
+	    adress.setStreet(activityFormBean.getStreet());
+	    adress.setPostcode(new Integer(activityFormBean.getPostcode()));
+	    adress.setCity(activityFormBean.getCity());
+	    adress.setEstablishment("");
+	    
+	    //On recupere la longitude et la latitude en fonction de l'adresse de l'utilisateur
+	    LongitudeLatitudeService directionService = new LongitudeLatitudeService();
+        Map<String,Double> logLatMap= directionService.getLongitudeLatitude(adress);
+	    
+	    adress.setLatitude(logLatMap.get("latitude"));
+	    adress.setLongitude(logLatMap.get("longitude"));
+	    
+	    //On recupere le detail de l'activite
+	    ActivityDetail activityDetail=new ActivityDetail();
+	    //activityDetail.get
+	    activityDetail.setAdress(adress);
+	    ActivityName activityName=new ActivityName();
+	    activityName.setId(new Integer(activityFormBean.getActivityNameId()));
+	    activityDetail.setNameActivity(activityName);
+	    activityDetail.setDescription(activityFormBean.getDescription());
+	    activityDetail.setDifficulty(new Integer(activityFormBean.getDifficulty()));
+	    activityDetail.setDuration(new Integer(activityFormBean.getDuration()));
+	    activityDetail.setEffectiveDate(activityFormBean.getEffectiveDate());
+	    activityDetail.setParticipantsNumber(new Integer(activityFormBean.getParticipantsNumber()));
+	    activityDetail.setAvailablePlaces(new Integer(activityFormBean.getParticipantsNumber()));
+	    activityDetail.setDateCreation(new Date());
+	    //On enregistre l'activité sur la base de donnée
+	    activityDetailService.createActivityDetail(activityDetail);
+	    
+	    
+	    userService.updateUser(connectedUser);
+	    
+    	ModelAndView  mav = new ModelAndView("user");
+    	return mav;
+	}
+    
+    @RequestMapping(value = "/resetAddActivity", method = RequestMethod.GET)
+    public ModelAndView resetAddActivity(ModelMap model) {
+    	//TODO Reset
+    	ModelAndView  mav = new ModelAndView("user");
+    	return mav;
+	}
     
 }
